@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EA9DB84F1ECC10B9007A1668"
-               BuildableName = "FeathersSwiftRest.framework"
-               BlueprintName = "FeathersSwiftRest-macOS"
+               BlueprintIdentifier = "EA9DB86B1ECC1481007A1668"
+               BuildableName = "FeathersSwiftRest-tvOS.framework"
+               BlueprintName = "FeathersSwiftRest-tvOS"
                ReferencedContainer = "container:FeathersSwiftRest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA9DB84F1ECC10B9007A1668"
-            BuildableName = "FeathersSwiftRest.framework"
-            BlueprintName = "FeathersSwiftRest-macOS"
+            BlueprintIdentifier = "EA9DB86B1ECC1481007A1668"
+            BuildableName = "FeathersSwiftRest-tvOS.framework"
+            BlueprintName = "FeathersSwiftRest-tvOS"
             ReferencedContainer = "container:FeathersSwiftRest.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA9DB84F1ECC10B9007A1668"
-            BuildableName = "FeathersSwiftRest.framework"
-            BlueprintName = "FeathersSwiftRest-macOS"
+            BlueprintIdentifier = "EA9DB86B1ECC1481007A1668"
+            BuildableName = "FeathersSwiftRest-tvOS.framework"
+            BlueprintName = "FeathersSwiftRest-tvOS"
             ReferencedContainer = "container:FeathersSwiftRest.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

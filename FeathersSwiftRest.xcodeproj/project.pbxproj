@@ -18,6 +18,10 @@
 		EA9DB8641ECC11B8007A1668 /* Feathers.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = EA9DB8611ECC11B8007A1668 /* Feathers.framework.dSYM */; };
 		EA9DB8651ECC11B8007A1668 /* Result.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = EA9DB8621ECC11B8007A1668 /* Result.framework.dSYM */; };
 		EA9DB8661ECC11C6007A1668 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DB8401ECC072D007A1668 /* RestProvider.swift */; };
+		EA9DB8741ECC14C3007A1668 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DB8401ECC072D007A1668 /* RestProvider.swift */; };
+		EA9DB8781ECC14FD007A1668 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9DB8751ECC14FD007A1668 /* Alamofire.framework */; };
+		EA9DB8791ECC14FD007A1668 /* Feathers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9DB8761ECC14FD007A1668 /* Feathers.framework */; };
+		EA9DB87A1ECC14FD007A1668 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9DB8771ECC14FD007A1668 /* Result.framework */; };
 		EAC0E8B11ECC04E700B0AE86 /* FeathersSwiftRest.h in Headers */ = {isa = PBXBuildFile; fileRef = EAC0E8AF1ECC04E700B0AE86 /* FeathersSwiftRest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -48,6 +52,10 @@
 		EA9DB8601ECC11B8007A1668 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/Mac/Alamofire.framework.dSYM; sourceTree = "<group>"; };
 		EA9DB8611ECC11B8007A1668 /* Feathers.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Feathers.framework.dSYM; path = Carthage/Build/Mac/Feathers.framework.dSYM; sourceTree = "<group>"; };
 		EA9DB8621ECC11B8007A1668 /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Result.framework.dSYM; path = Carthage/Build/Mac/Result.framework.dSYM; sourceTree = "<group>"; };
+		EA9DB86C1ECC1481007A1668 /* FeathersSwiftRest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeathersSwiftRest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9DB8751ECC14FD007A1668 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/tvOS/Alamofire.framework; sourceTree = "<group>"; };
+		EA9DB8761ECC14FD007A1668 /* Feathers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Feathers.framework; path = Carthage/Build/tvOS/Feathers.framework; sourceTree = "<group>"; };
+		EA9DB8771ECC14FD007A1668 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
 		EAC0E8AC1ECC04E700B0AE86 /* FeathersSwiftRest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeathersSwiftRest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC0E8AF1ECC04E700B0AE86 /* FeathersSwiftRest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeathersSwiftRest.h; sourceTree = "<group>"; };
 		EAC0E8B01ECC04E700B0AE86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +69,16 @@
 				EA9DB85D1ECC115F007A1668 /* Feathers.framework in Frameworks */,
 				EA9DB85A1ECC1156007A1668 /* Alamofire.framework in Frameworks */,
 				EA9DB85B1ECC1156007A1668 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9DB8681ECC1481007A1668 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9DB8781ECC14FD007A1668 /* Alamofire.framework in Frameworks */,
+				EA9DB8791ECC14FD007A1668 /* Feathers.framework in Frameworks */,
+				EA9DB87A1ECC14FD007A1668 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +106,9 @@
 		EA9DB8431ECC0D05007A1668 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA9DB8751ECC14FD007A1668 /* Alamofire.framework */,
+				EA9DB8761ECC14FD007A1668 /* Feathers.framework */,
+				EA9DB8771ECC14FD007A1668 /* Result.framework */,
 				EA9DB8601ECC11B8007A1668 /* Alamofire.framework.dSYM */,
 				EA9DB8611ECC11B8007A1668 /* Feathers.framework.dSYM */,
 				EA9DB8621ECC11B8007A1668 /* Result.framework.dSYM */,
@@ -115,6 +136,7 @@
 			children = (
 				EAC0E8AC1ECC04E700B0AE86 /* FeathersSwiftRest.framework */,
 				EA9DB8501ECC10B9007A1668 /* FeathersSwiftRest.framework */,
+				EA9DB86C1ECC1481007A1668 /* FeathersSwiftRest.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +155,13 @@
 
 /* Begin PBXHeadersBuildPhase section */
 		EA9DB84D1ECC10B9007A1668 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9DB8691ECC1481007A1668 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -170,6 +199,25 @@
 			productReference = EA9DB8501ECC10B9007A1668 /* FeathersSwiftRest.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		EA9DB86B1ECC1481007A1668 /* FeathersSwiftRest-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA9DB8711ECC1482007A1668 /* Build configuration list for PBXNativeTarget "FeathersSwiftRest-tvOS" */;
+			buildPhases = (
+				EA9DB8671ECC1481007A1668 /* Sources */,
+				EA9DB8681ECC1481007A1668 /* Frameworks */,
+				EA9DB8691ECC1481007A1668 /* Headers */,
+				EA9DB86A1ECC1481007A1668 /* Resources */,
+				EA9DB87B1ECC1508007A1668 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FeathersSwiftRest-tvOS";
+			productName = "FeathersSwiftRest-tvOS";
+			productReference = EA9DB86C1ECC1481007A1668 /* FeathersSwiftRest.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		EAC0E8AB1ECC04E700B0AE86 /* FeathersSwiftRest-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EAC0E8B41ECC04E700B0AE86 /* Build configuration list for PBXNativeTarget "FeathersSwiftRest-iOS" */;
@@ -202,6 +250,10 @@
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
 					};
+					EA9DB86B1ECC1481007A1668 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
 					EAC0E8AB1ECC04E700B0AE86 = {
 						CreatedOnToolsVersion = 8.3.2;
 						LastSwiftMigration = 0830;
@@ -223,12 +275,20 @@
 			targets = (
 				EAC0E8AB1ECC04E700B0AE86 /* FeathersSwiftRest-iOS */,
 				EA9DB84F1ECC10B9007A1668 /* FeathersSwiftRest-macOS */,
+				EA9DB86B1ECC1481007A1668 /* FeathersSwiftRest-tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EA9DB84E1ECC10B9007A1668 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9DB86A1ECC1481007A1668 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -279,6 +339,22 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		EA9DB87B1ECC1508007A1668 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/Feathers.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -287,6 +363,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9DB8661ECC11C6007A1668 /* RestProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9DB8671ECC1481007A1668 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9DB8741ECC14C3007A1668 /* RestProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +438,56 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		EA9DB8721ECC1482007A1668 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = FeathersSwiftRest/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.feathersjs.FeathersSwiftRest-tvOS";
+				PRODUCT_NAME = FeathersSwiftRest;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		EA9DB8731ECC1482007A1668 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = FeathersSwiftRest/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.feathersjs.FeathersSwiftRest-tvOS";
+				PRODUCT_NAME = FeathersSwiftRest;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -515,6 +649,14 @@
 			buildConfigurations = (
 				EA9DB8561ECC10BA007A1668 /* Debug */,
 				EA9DB8571ECC10BA007A1668 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EA9DB8711ECC1482007A1668 /* Build configuration list for PBXNativeTarget "FeathersSwiftRest-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA9DB8721ECC1482007A1668 /* Debug */,
+				EA9DB8731ECC1482007A1668 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
