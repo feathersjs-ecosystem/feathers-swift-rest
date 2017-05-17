@@ -4,14 +4,44 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>FeathersSwiftRest.xcscheme</key>
+		<key>FeathersSwiftRest-iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>FeathersSwiftRest-macOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>FeathersSwiftRest-tvOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>FeathersSwiftRest-watchOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>EA9DB84F1ECC10B9007A1668</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA9DB86B1ECC1481007A1668</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA9DB8801ECC15A3007A1668</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EAC0E8AB1ECC04E700B0AE86</key>
 		<dict>
 			<key>primary</key>
