@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA9DB8411ECC072D007A1668 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DB8401ECC072D007A1668 /* RestProvider.swift */; };
 		EAC0E8B11ECC04E700B0AE86 /* FeathersSwiftRest.h in Headers */ = {isa = PBXBuildFile; fileRef = EAC0E8AF1ECC04E700B0AE86 /* FeathersSwiftRest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA9DB8401ECC072D007A1668 /* RestProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestProvider.swift; path = Core/RestProvider.swift; sourceTree = "<group>"; };
 		EAC0E8AC1ECC04E700B0AE86 /* FeathersSwiftRest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeathersSwiftRest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC0E8AF1ECC04E700B0AE86 /* FeathersSwiftRest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeathersSwiftRest.h; sourceTree = "<group>"; };
 		EAC0E8B01ECC04E700B0AE86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -27,6 +29,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA9DB8421ECC0737007A1668 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EA9DB8401ECC072D007A1668 /* RestProvider.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
 		EAC0E8A21ECC04E700B0AE86 = {
 			isa = PBXGroup;
 			children = (
@@ -46,6 +56,7 @@
 		EAC0E8AE1ECC04E700B0AE86 /* FeathersSwiftRest */ = {
 			isa = PBXGroup;
 			children = (
+				EA9DB8421ECC0737007A1668 /* Core */,
 				EAC0E8AF1ECC04E700B0AE86 /* FeathersSwiftRest.h */,
 				EAC0E8B01ECC04E700B0AE86 /* Info.plist */,
 			);
@@ -95,6 +106,7 @@
 				TargetAttributes = {
 					EAC0E8AB1ECC04E700B0AE86 = {
 						CreatedOnToolsVersion = 8.3.2;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA9DB8411ECC072D007A1668 /* RestProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +254,7 @@
 		EAC0E8B51ECC04E700B0AE86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -252,6 +266,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.feathersjs.FeathersSwiftRest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -259,6 +274,7 @@
 		EAC0E8B61ECC04E700B0AE86 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -293,6 +309,7 @@
 				EAC0E8B61ECC04E700B0AE86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
