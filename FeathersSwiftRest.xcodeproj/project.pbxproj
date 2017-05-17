@@ -105,6 +105,7 @@
 				EAC0E8A81ECC04E700B0AE86 /* Frameworks */,
 				EAC0E8A91ECC04E700B0AE86 /* Headers */,
 				EAC0E8AA1ECC04E700B0AE86 /* Resources */,
+				EA9DB84A1ECC0EB1007A1668 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -157,6 +158,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EA9DB84A1ECC0EB1007A1668 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Feathers.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EAC0E8A71ECC04E700B0AE86 /* Sources */ = {
@@ -286,6 +307,7 @@
 				);
 				INFOPLIST_FILE = FeathersSwiftRest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.feathersjs.FeathersSwiftRest;
 				PRODUCT_NAME = FeathersSwiftRest;
@@ -310,6 +332,7 @@
 				);
 				INFOPLIST_FILE = FeathersSwiftRest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.feathersjs.FeathersSwiftRest;
 				PRODUCT_NAME = FeathersSwiftRest;
