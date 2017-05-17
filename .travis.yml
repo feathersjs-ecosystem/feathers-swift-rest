@@ -1,17 +1,13 @@
 language: objective-c
 osx_image: xcode8.3
 
-cache:
-  directories:
-  - Carthage
+cache: cocoapods
 
 before_install: true
 install:
   - rvm get stable || true
-  - brew update || true
-  - brew install carthage || true
-  - brew outdated carthage || brew upgrade carthage
-  - carthage bootstrap --no-use-binaries --cache-builds || true
+  - gem install cocoapods
+  - pod repo update --silent
 before_script:
  - chmod +x ./script/build
 script:
@@ -56,8 +52,6 @@ matrix:
       env:
         - JOB=CARTHAGE-watchOS
     - script:
-      - gem install cocoapods
-      - pod repo update --silent
       - travis_wait 30 pod lib lint FeathersSwiftRest.podspec
       env:
         - JOB=PODSPEC
