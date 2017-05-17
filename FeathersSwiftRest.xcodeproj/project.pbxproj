@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		EA9DB8411ECC072D007A1668 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DB8401ECC072D007A1668 /* RestProvider.swift */; };
+		EA9DB8471ECC0D05007A1668 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9DB8441ECC0D05007A1668 /* Alamofire.framework */; };
+		EA9DB8481ECC0D05007A1668 /* Feathers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9DB8451ECC0D05007A1668 /* Feathers.framework */; };
+		EA9DB8491ECC0D05007A1668 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9DB8461ECC0D05007A1668 /* Result.framework */; };
 		EAC0E8B11ECC04E700B0AE86 /* FeathersSwiftRest.h in Headers */ = {isa = PBXBuildFile; fileRef = EAC0E8AF1ECC04E700B0AE86 /* FeathersSwiftRest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EA9DB8401ECC072D007A1668 /* RestProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestProvider.swift; path = Core/RestProvider.swift; sourceTree = "<group>"; };
+		EA9DB8441ECC0D05007A1668 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		EA9DB8451ECC0D05007A1668 /* Feathers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Feathers.framework; path = Carthage/Build/iOS/Feathers.framework; sourceTree = "<group>"; };
+		EA9DB8461ECC0D05007A1668 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		EAC0E8AC1ECC04E700B0AE86 /* FeathersSwiftRest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeathersSwiftRest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC0E8AF1ECC04E700B0AE86 /* FeathersSwiftRest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeathersSwiftRest.h; sourceTree = "<group>"; };
 		EAC0E8B01ECC04E700B0AE86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -23,6 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA9DB8471ECC0D05007A1668 /* Alamofire.framework in Frameworks */,
+				EA9DB8481ECC0D05007A1668 /* Feathers.framework in Frameworks */,
+				EA9DB8491ECC0D05007A1668 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,11 +46,22 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		EA9DB8431ECC0D05007A1668 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA9DB8441ECC0D05007A1668 /* Alamofire.framework */,
+				EA9DB8451ECC0D05007A1668 /* Feathers.framework */,
+				EA9DB8461ECC0D05007A1668 /* Result.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EAC0E8A21ECC04E700B0AE86 = {
 			isa = PBXGroup;
 			children = (
 				EAC0E8AE1ECC04E700B0AE86 /* FeathersSwiftRest */,
 				EAC0E8AD1ECC04E700B0AE86 /* Products */,
+				EA9DB8431ECC0D05007A1668 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,9 +97,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		EAC0E8AB1ECC04E700B0AE86 /* FeathersSwiftRest */ = {
+		EAC0E8AB1ECC04E700B0AE86 /* FeathersSwiftRest-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EAC0E8B41ECC04E700B0AE86 /* Build configuration list for PBXNativeTarget "FeathersSwiftRest" */;
+			buildConfigurationList = EAC0E8B41ECC04E700B0AE86 /* Build configuration list for PBXNativeTarget "FeathersSwiftRest-iOS" */;
 			buildPhases = (
 				EAC0E8A71ECC04E700B0AE86 /* Sources */,
 				EAC0E8A81ECC04E700B0AE86 /* Frameworks */,
@@ -90,7 +110,7 @@
 			);
 			dependencies = (
 			);
-			name = FeathersSwiftRest;
+			name = "FeathersSwiftRest-iOS";
 			productName = FeathersSwiftRest;
 			productReference = EAC0E8AC1ECC04E700B0AE86 /* FeathersSwiftRest.framework */;
 			productType = "com.apple.product-type.framework";
@@ -123,7 +143,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EAC0E8AB1ECC04E700B0AE86 /* FeathersSwiftRest */,
+				EAC0E8AB1ECC04E700B0AE86 /* FeathersSwiftRest-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -260,11 +280,15 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FeathersSwiftRest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.feathersjs.FeathersSwiftRest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FeathersSwiftRest;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -280,11 +304,15 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FeathersSwiftRest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.feathersjs.FeathersSwiftRest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FeathersSwiftRest;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -302,7 +330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EAC0E8B41ECC04E700B0AE86 /* Build configuration list for PBXNativeTarget "FeathersSwiftRest" */ = {
+		EAC0E8B41ECC04E700B0AE86 /* Build configuration list for PBXNativeTarget "FeathersSwiftRest-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EAC0E8B51ECC04E700B0AE86 /* Debug */,
