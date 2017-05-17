@@ -789,6 +789,7 @@
 				EA9DB8571ECC10BA007A1668 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EA9DB8711ECC1482007A1668 /* Build configuration list for PBXNativeTarget "FeathersSwiftRest-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -797,6 +798,7 @@
 				EA9DB8731ECC1482007A1668 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EA9DB8861ECC15A3007A1668 /* Build configuration list for PBXNativeTarget "FeathersSwiftRest-watchOS" */ = {
 			isa = XCConfigurationList;
@@ -805,6 +807,7 @@
 				EA9DB8881ECC15A3007A1668 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EAC0E8A61ECC04E700B0AE86 /* Build configuration list for PBXProject "FeathersSwiftRest" */ = {
 			isa = XCConfigurationList;
