@@ -1,54 +1,69 @@
 language: objective-c
 osx_image: xcode8.3
 
-cache: cocoapods
+cache:
+  - cocoapods
+  - directories:
+    - Carthage
 
 before_install: true
 install:
   - rvm get stable || true
+  - brew update || true
+  - brew install carthage || true
+  - brew outdated carthage || brew upgrade carthage
   - gem install cocoapods
-  - pod repo update --silent
+  - pod repo update
 before_script:
- - chmod +x ./script/build
+  - pod install
+  - chmod +x ./script/build
 script:
   - script/build
-xcode_project: FeathersSwiftRest.xcodeproj
+xcode_workspace: FeathersSwiftRest.xcworkspace
 matrix:
   include:
     - xcode_scheme: FeathersSwiftRest-macOS
       env:
         - XCODE_SDK=macosx
-        - XCODE_ACTION=build
+        - XCODE_ACTION="build test"
         - XCODE_DESTINATION="arch=x86_64"
     - xcode_scheme: FeathersSwiftRest-iOS
       env:
         - XCODE_SDK=iphonesimulator
-        - XCODE_ACTION=build
+        - XCODE_ACTION="build-for-testing test-without-building"
         - XCODE_DESTINATION="platform=iOS Simulator,name=iPhone 6s"
     - xcode_scheme: FeathersSwiftRest-tvOS
       env:
         - XCODE_SDK=appletvsimulator
-        - XCODE_ACTION=build
+        - XCODE_ACTION="build-for-testing test-without-building"
         - XCODE_DESTINATION="platform=tvOS Simulator,name=Apple TV 1080p"
     - xcode_scheme: FeathersSwiftRest-watchOS
       env:
         - XCODE_SDK=watchsimulator
         - XCODE_ACTION=build
-        - XCODE_DESTINATION="platform=watchOS Simulator,name=Apple Watch - 38mm,OS=2.2"
-    - script:
-        - carthage build --no-skip-current --platform mac
+        - XCODE_DESTINATION="platform=watchOS Simulator,name=Apple Watch - 38mm,OS=3.2"
+    - script: carthage build --no-skip-current --platform mac
+      before_script:
+        - pod install
+        - carthage checkout || true
       env:
         - JOB=CARTHAGE-macOS
-    - script:
-        - carthage build --no-skip-current --platform iOS
+    - script: carthage build --no-skip-current --platform iOS
+      before_script:
+        - pod install
+        - carthage checkout || true
       env:
         - JOB=CARTHAGE-iOS
-    - script:
-        - carthage build --no-skip-current --platform tvOS
+    - script: carthage build --no-skip-current --platform tvOS
+      before_script:
+        - pod install
+        - carthage checkout || true
       env:
         - JOB=CARTHAGE-tvOS
-    - script:
-        - carthage build --no-skip-current --platform watchOS
+    - script: carthage build --no-skip-current --platform watchOS
+      before_script:
+        - pod install
+        - carthage checkout || true
       env:
         - JOB=CARTHAGE-watchOS
     - script:
