@@ -2,7 +2,7 @@
 
 
 def framework_pods
-  pod 'Feathers', '4.0'
+  pod 'Feathers'
   pod 'Alamofire'
   pod 'Result'
 end

@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import enum Result.Result
 import Feathers
+import PromiseKit
 
 final public class RestProvider: Provider {
 
@@ -21,27 +22,35 @@ final public class RestProvider: Provider {
 
     public final func setup(app: Feathers) {}
 
-    public func request(endpoint: Endpoint, _ completion: @escaping FeathersCallback) {
-        let request = buildRequest(from: endpoint)
-        Alamofire.request(request)
-            .validate()
-            .response(responseSerializer: DataRequest.jsonResponseSerializer()) { [weak self] response in
-                guard let vSelf = self else { return }
-                let result = vSelf.handleResponse(response)
-                completion(result.error, result.value)
+    public func request(endpoint: Endpoint) -> Promise<Response> {
+        return Promise { [weak self] resolve, reject in
+            guard let vSelf = self else {
+                reject(FeathersError.unknown)
+                return
+            }
+            let request = vSelf.buildRequest(from: endpoint)
+            Alamofire.request(request)
+                .validate()
+                .response(responseSerializer: DataRequest.jsonResponseSerializer()) { [weak self] response in
+                    guard let vSelf = self else { return }
+                    let result = vSelf.handleResponse(response)
+                    if let error = result.error {
+                        reject(error)
+                    } else if let response = result.value {
+                        resolve(response)
+                    } else {
+                        reject(FeathersError.unknown)
+                    }
+            }
         }
     }
 
-    public func request(hookObject: HookObject, _ next: @escaping HookNext) {
-
+    public final func authenticate(_ path: String, credentials: [String: Any]) -> Promise<Response> {
+        return authenticationRequest(path: path, method: .post, parameters: credentials, encoding: URLEncoding.httpBody)
     }
 
-    public final func authenticate(_ path: String, credentials: [String: Any], _ completion: @escaping FeathersCallback) {
-        authenticationRequest(path: path, method: .post, parameters: credentials, encoding: URLEncoding.httpBody, completion)
-    }
-
-    public func logout(path: String, _ completion: @escaping FeathersCallback) {
-        authenticationRequest(path: path, method: .delete, parameters: nil, encoding: URLEncoding.default, completion)
+    public func logout(path: String) -> Promise<Response> {
+        return authenticationRequest(path: path, method: .delete, parameters: nil, encoding: URLEncoding.default)
     }
 
     /// Perform an authentication request.
@@ -52,13 +61,24 @@ final public class RestProvider: Provider {
     ///   - parameters: Parameters.
     ///   - encoding: Parameter encoding.
     ///   - completion: Completion block.
-    private func authenticationRequest(path: String, method: HTTPMethod, parameters: [String: Any]?, encoding: ParameterEncoding, _ completion: @escaping FeathersCallback) {
-        Alamofire.request(baseURL.appendingPathComponent(path), method: method, parameters: parameters, encoding: encoding)
-            .validate()
-            .response(responseSerializer: DataRequest.jsonResponseSerializer()) { [weak self] response in
-                guard let vSelf = self else { return }
-                let result = vSelf.handleResponse(response)
-                completion(result.error, result.value)
+    private func authenticationRequest(path: String, method: HTTPMethod, parameters: [String: Any]?, encoding: ParameterEncoding) -> Promise<Response>{
+        return Promise { [weak self] resolve, reject in
+            guard let vSelf = self else {
+                reject(FeathersError.unknown)
+                return
+            }
+            Alamofire.request(vSelf.baseURL.appendingPathComponent(path), method: method, parameters: parameters, encoding: encoding)
+                .validate()
+                .response(responseSerializer: DataRequest.jsonResponseSerializer()) { response in
+                    let result = vSelf.handleResponse(response)
+                    if let error = result.error {
+                        reject(error)
+                    } else if let response = result.value {
+                        resolve(response)
+                    } else {
+                        reject(FeathersError.unknown)
+                    }
+            }
         }
     }
 
