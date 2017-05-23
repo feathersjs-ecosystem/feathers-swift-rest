@@ -9,10 +9,15 @@
 import Foundation
 import Alamofire
 import enum Result.Result
+import enum Result.NoError
 import Feathers
-import PromiseKit
+import ReactiveSwift
 
 final public class RestProvider: Provider {
+
+    public var supportsRealtimeEvents: Bool {
+        return false
+    }
 
     public let baseURL: URL
 
@@ -22,10 +27,10 @@ final public class RestProvider: Provider {
 
     public final func setup(app: Feathers) {}
 
-    public func request(endpoint: Endpoint) -> Promise<Response> {
-        return Promise { [weak self] resolve, reject in
+    public func request(endpoint: Endpoint) -> SignalProducer<Response, FeathersError> {
+        return SignalProducer { [weak self] observer, disposable in
             guard let vSelf = self else {
-                reject(FeathersError.unknown)
+                observer.sendInterrupted()
                 return
             }
             let request = vSelf.buildRequest(from: endpoint)
@@ -35,23 +40,37 @@ final public class RestProvider: Provider {
                     guard let vSelf = self else { return }
                     let result = vSelf.handleResponse(response)
                     if let error = result.error {
-                        reject(error)
+                        observer.send(error: error)
                     } else if let response = result.value {
-                        resolve(response)
+                        observer.send(value: response)
                     } else {
-                        reject(FeathersError.unknown)
+                        observer.send(error: .unknown)
                     }
             }
         }
     }
 
-    public final func authenticate(_ path: String, credentials: [String: Any]) -> Promise<Response> {
+    public final func authenticate(_ path: String, credentials: [String: Any]) -> SignalProducer<Response, FeathersError> {
         return authenticationRequest(path: path, method: .post, parameters: credentials, encoding: URLEncoding.httpBody)
     }
 
-    public func logout(path: String) -> Promise<Response> {
+    public func logout(path: String) -> SignalProducer<Response, FeathersError> {
         return authenticationRequest(path: path, method: .delete, parameters: nil, encoding: URLEncoding.default)
     }
+
+    public func on(event: String) -> Signal<[String : Any], NoError> {
+        return .never
+    }
+
+    public func once(event: String) -> Signal<[String : Any], NoError> {
+        return .never
+    }
+
+    public func off(event: String) {
+        // no-op
+    }
+
+    // MARK: - Helpers
 
     /// Perform an authentication request.
     ///
@@ -61,10 +80,10 @@ final public class RestProvider: Provider {
     ///   - parameters: Parameters.
     ///   - encoding: Parameter encoding.
     ///   - completion: Completion block.
-    private func authenticationRequest(path: String, method: HTTPMethod, parameters: [String: Any]?, encoding: ParameterEncoding) -> Promise<Response>{
-        return Promise { [weak self] resolve, reject in
+    private func authenticationRequest(path: String, method: HTTPMethod, parameters: [String: Any]?, encoding: ParameterEncoding) -> SignalProducer<Response, FeathersError>{
+        return SignalProducer { [weak self] observer, disposable in
             guard let vSelf = self else {
-                reject(FeathersError.unknown)
+                observer.sendInterrupted()
                 return
             }
             Alamofire.request(vSelf.baseURL.appendingPathComponent(path), method: method, parameters: parameters, encoding: encoding)
@@ -72,11 +91,11 @@ final public class RestProvider: Provider {
                 .response(responseSerializer: DataRequest.jsonResponseSerializer()) { response in
                     let result = vSelf.handleResponse(response)
                     if let error = result.error {
-                        reject(error)
+                        observer.send(error: error)
                     } else if let response = result.value {
-                        resolve(response)
+                        observer.send(value: response)
                     } else {
-                        reject(FeathersError.unknown)
+                        observer.send(error: .unknown)
                     }
             }
         }
@@ -177,6 +196,40 @@ fileprivate extension Endpoint {
         }
         url = method.parameters != nil ? (url.URLByAppendingQueryParameters(parameters: method.parameters!) ?? url) : url
         return url
+    }
+    
+}
+
+public extension Service.Method {
+
+    public var id: String? {
+        switch self {
+        case .get(let id, _): return id
+        case .update(let id, _, _),
+             .patch(let id, _, _): return id
+        case .remove(let id, _): return id
+        default: return nil
+        }
+    }
+
+    public var parameters: [String: Any]? {
+        switch self {
+        case .find(let parameters): return parameters
+        case .get(_, let parameters): return parameters
+        case .create(_, let parameters): return parameters
+        case .update(_, _, let parameters): return parameters
+        case .patch(_, _, let parameters): return parameters
+        case .remove(_, let parameters): return parameters
+        }
+    }
+
+    public var data: [String: Any]? {
+        switch self {
+        case .create(let data, _): return data
+        case .update(_, let data, _): return data
+        case .patch(_, let data, _): return data
+        default: return nil
+        }
     }
     
 }
