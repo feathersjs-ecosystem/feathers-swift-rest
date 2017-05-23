@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "FeathersSwiftRest"
   # Version goes here and will be used to access the git tag later on, once we have a first release.
-  s.version      = "2.0.0"
+  s.version      = "3.0.0"
   s.summary      = "REST transport provider for FeathersSwift"
   s.description  = <<-DESC
                    REST provider for FeathersSwift for making HTTP connections to a
@@ -25,6 +25,7 @@ Pod::Spec.new do |s|
     ss.dependency 'Result'
     ss.dependency 'Feathers'
     ss.dependency 'Alamofire'
+    ss.dependency 'ReactiveSwift'
   end
 
   s.pod_target_xcconfig = {"OTHER_SWIFT_FLAGS[config=Release]" => "-suppress-warnings" }
