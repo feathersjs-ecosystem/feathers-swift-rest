@@ -13,8 +13,6 @@ install:
   - brew outdated carthage || brew upgrade carthage
 before_script:
   - chmod +x ./script/build
-script:
-  - script/build
 xcode_project: FeathersSwiftRest.xcodeproj
 matrix:
   include:
@@ -25,6 +23,7 @@ matrix:
         - JOB=PODSPEC
     - script:
       - carthage bootstrap --no-use-binaries --platform mac
+      - script/build
       xcode_scheme: FeathersSwiftRest-macOS
       env:
         - XCODE_SDK=macosx
@@ -32,6 +31,7 @@ matrix:
         - XCODE_DESTINATION="arch=x86_64"
     - script:
       - carthage bootstrap --no-use-binaries --platform iOS
+      - script/build
       xcode_scheme: FeathersSwiftRest-iOS
       env:
         - XCODE_SDK=iphonesimulator
@@ -39,6 +39,7 @@ matrix:
         - XCODE_DESTINATION="platform=iOS Simulator,name=iPhone 6s"
     - script:
       - carthage bootstrap --no-use-binaries --platform tvOS
+      - script/build
       xcode_scheme: FeathersSwiftRest-tvOS
       env:
         - XCODE_SDK=appletvsimulator
@@ -46,12 +47,15 @@ matrix:
         - XCODE_DESTINATION="platform=tvOS Simulator,name=Apple TV 1080p"
     - script:
       - carthage bootstrap --no-use-binaries --platform watchOS
+      - script/build
       xcode_scheme: FeathersSwiftRest-watchOS
       env:
         - XCODE_SDK=watchsimulator
         - XCODE_ACTION=build
         - XCODE_DESTINATION="platform=watchOS Simulator,name=Apple Watch - 38mm,OS=3.2"
-    - script: carthage build --no-skip-current --platform mac
+    - script:
+      - carthage checkout
+      - carthage build --no-skip-current --platform mac
       env:
         - JOB=CARTHAGE-macOS
     - script:
