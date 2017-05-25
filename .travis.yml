@@ -2,6 +2,7 @@ language: objective-c
 osx_image: xcode8.3
 
 cache:
+  - cocoapods
   - directories:
     - Carthage
 
@@ -18,7 +19,7 @@ matrix:
   include:
     - script:
       - pod repo update
-      - pod lib lint FeathersSwiftRest.podspec
+      - travis_wait 30 pod lib lint FeathersSwiftRest.podspec
       env:
         - JOB=PODSPEC
     - script:
@@ -54,22 +55,22 @@ matrix:
         - XCODE_ACTION=build
         - XCODE_DESTINATION="platform=watchOS Simulator,name=Apple Watch - 38mm,OS=3.2"
     - script:
-      - carthage checkout
+      - carthage checkout --no-use-binaries
       - carthage build --no-skip-current --platform mac
       env:
         - JOB=CARTHAGE-macOS
     - script:
-        - carthage checkout
+        - carthage checkout --no-use-binaries
         - carthage build --no-skip-current --platform iOS
       env:
         - JOB=CARTHAGE-iOS
     - script:
-      - carthage checkout
+      - carthage checkout --no-use-binaries
       - carthage build --no-skip-current --platform tvOS
       env:
         - JOB=CARTHAGE-tvOS
     - script:
-      - carthage checkout
+      - carthage checkout --no-use-binaries
       - carthage build --no-skip-current --platform watchOS
       env:
         - JOB=CARTHAGE-watchOS
