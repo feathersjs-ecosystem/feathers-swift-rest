@@ -17,7 +17,7 @@ xcode_project: FeathersSwiftRest.xcodeproj
 matrix:
   include:
     - script:
-      - pod repo update --silent
+      - pod repo update
       - pod lib lint FeathersSwiftRest.podspec
       env:
         - JOB=PODSPEC
