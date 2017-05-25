@@ -20,10 +20,8 @@ xcode_project: FeathersSwiftRest.xcodeproj
 matrix:
   include:
     - script:
-      - pod repo update
-      - travis_wait 30 pod lib lint FeathersSwiftRest.podspec --verbose
-      env:
-        - JOB=PODSPEC
+      - pod repo update --silent
+      - pod lib lint FeathersSwiftRest.podspec
     - xcode_scheme: FeathersSwiftRest-macOS
       env:
         - XCODE_SDK=macosx
@@ -56,3 +54,8 @@ matrix:
     - script: carthage build --no-skip-current --platform watchOS
       env:
         - JOB=CARTHAGE-watchOS
+    - script:
+      - pod repo update --silent
+      - pod lib lint FeathersSwiftRest.podspec
+      env:
+        - JOB=PODSPEC
