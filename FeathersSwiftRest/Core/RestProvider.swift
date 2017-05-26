@@ -27,7 +27,7 @@ final public class RestProvider: Provider {
 
     public final func setup(app: Feathers) {}
 
-    public func request(endpoint: Endpoint) -> SignalProducer<Response, FeathersError> {
+    public func request(endpoint: Endpoint) -> SignalProducer<Response, AnyFeathersError> {
         return SignalProducer { [weak self] observer, disposable in
             guard let vSelf = self else {
                 observer.sendInterrupted()
@@ -44,17 +44,17 @@ final public class RestProvider: Provider {
                     } else if let response = result.value {
                         observer.send(value: response)
                     } else {
-                        observer.send(error: .unknown)
+                        observer.send(error: AnyFeathersError(FeathersNetworkError.unknown))
                     }
             }
         }
     }
 
-    public final func authenticate(_ path: String, credentials: [String: Any]) -> SignalProducer<Response, FeathersError> {
+    public final func authenticate(_ path: String, credentials: [String: Any]) -> SignalProducer<Response, AnyFeathersError> {
         return authenticationRequest(path: path, method: .post, parameters: credentials, encoding: URLEncoding.httpBody)
     }
 
-    public func logout(path: String) -> SignalProducer<Response, FeathersError> {
+    public func logout(path: String) -> SignalProducer<Response, AnyFeathersError> {
         return authenticationRequest(path: path, method: .delete, parameters: nil, encoding: URLEncoding.default)
     }
 
@@ -80,7 +80,7 @@ final public class RestProvider: Provider {
     ///   - parameters: Parameters.
     ///   - encoding: Parameter encoding.
     ///   - completion: Completion block.
-    private func authenticationRequest(path: String, method: HTTPMethod, parameters: [String: Any]?, encoding: ParameterEncoding) -> SignalProducer<Response, FeathersError>{
+    private func authenticationRequest(path: String, method: HTTPMethod, parameters: [String: Any]?, encoding: ParameterEncoding) -> SignalProducer<Response, AnyFeathersError>{
         return SignalProducer { [weak self] observer, disposable in
             guard let vSelf = self else {
                 observer.sendInterrupted()
@@ -95,7 +95,7 @@ final public class RestProvider: Provider {
                     } else if let response = result.value {
                         observer.send(value: response)
                     } else {
-                        observer.send(error: .unknown)
+                        observer.send(error: AnyFeathersError(FeathersNetworkError.unknown))
                     }
             }
         }
@@ -105,18 +105,18 @@ final public class RestProvider: Provider {
     ///
     /// - Parameter dataResponse: Alamofire data response.
     /// - Returns: Result with an error or a successful response.
-    private func handleResponse(_ dataResponse: DataResponse<Any>) -> Result<Response, FeathersError> {
+    private func handleResponse(_ dataResponse: DataResponse<Any>) -> Result<Response, AnyFeathersError> {
         // If the status code maps to a feathers error code, return that error.
         if let statusCode = dataResponse.response?.statusCode,
-            let feathersError = FeathersError(statusCode: statusCode) {
-            return .failure(feathersError)
+            let feathersError = FeathersNetworkError(statusCode: statusCode) {
+            return .failure(AnyFeathersError(feathersError))
         } else if let error = dataResponse.error {
             // If the data response has an error, wrap it and return it.
-            return .failure(FeathersError(error: error))
+            return .failure(AnyFeathersError(FeathersNetworkError(error: error)))
         } else if let value = dataResponse.value {
             // If the response value is an array, there is no pagination.
             if let jsonArray = value as? [Any] {
-                return .success(Response(pagination: nil, data: .jsonArray(jsonArray)))
+                return .success(Response(pagination: nil, data: .list(jsonArray)))
             } else if let jsonDictionary = value as? [String: Any] {
                 // If the value is a json dictionary, it can be one of two cases:
                 // 1: The json object is wrapping the data with pagination information
@@ -125,13 +125,13 @@ final public class RestProvider: Provider {
                     let limit = jsonDictionary["limit"] as? Int,
                     let total = jsonDictionary["total"] as? Int,
                     let dataArray = jsonDictionary["data"] as? [Any] {
-                    return .success(Response(pagination: Pagination(total: total, limit: limit, skip: skip), data: .jsonArray(dataArray)))
+                    return .success(Response(pagination: Pagination(total: total, limit: limit, skip: skip), data: .list(dataArray)))
                 } else {
-                    return .success(Response(pagination: nil, data: .jsonObject(value)))
+                    return .success(Response(pagination: nil, data: .object(value)))
                 }
             }
         }
-        return .failure(.unknown)
+        return .failure(AnyFeathersError(FeathersNetworkError.unknown))
     }
 
     /// Build a request from the given endpiont.
@@ -214,12 +214,12 @@ public extension Service.Method {
 
     public var parameters: [String: Any]? {
         switch self {
-        case .find(let parameters): return parameters
-        case .get(_, let parameters): return parameters
-        case .create(_, let parameters): return parameters
-        case .update(_, _, let parameters): return parameters
-        case .patch(_, _, let parameters): return parameters
-        case .remove(_, let parameters): return parameters
+        case .find(let query): return query?.serialize()
+        case .get(_, let query): return query?.serialize()
+        case .create(_, let query): return query?.serialize()
+        case .update(_, _, let query): return query?.serialize()
+        case .patch(_, _, let query): return query?.serialize()
+        case .remove(_, let query): return query?.serialize()
         }
     }
 
