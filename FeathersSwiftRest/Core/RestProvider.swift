@@ -59,11 +59,11 @@ final public class RestProvider: Provider {
     }
 
     public func on(event: String) -> Signal<[String : Any], NoError> {
-        return .never
+        return .empty
     }
 
     public func once(event: String) -> Signal<[String : Any], NoError> {
-        return .never
+        return .empty
     }
 
     public func off(event: String) {
