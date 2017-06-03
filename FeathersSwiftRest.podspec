@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
                    REST provider for FeathersSwift for making HTTP connections to a
                    FeathersJS backend.
                    DESC
-  s.homepage     = "https://github.com/startupthekid/feathers-swift-rest"
+  s.homepage     = "https://github.com/feathersjs/feathers-swift-rest"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = "startupthekid"
 
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.10"
   s.tvos.deployment_target = "9.0"
   s.watchos.deployment_target = "2.0"
-  s.source       = { :git => "https://github.com/startupthekid/feathers-swift-rest.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/feathersjs/feathers-swift-rest.git", :tag => "#{s.version}" }
 
   s.default_subspec = "Core"
 

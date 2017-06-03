@@ -1,10 +1,10 @@
 # FeathersSwiftRest
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](#carthage) [![CocoaPods compatible](https://img.shields.io/cocoapods/v/FeathersSwiftRest.svg)](#cocoapods) [![GitHub release](https://img.shields.io/github/release/startupthekid/feathers-swift-rest.svg)](https://github.com/startupthekid/feathers-swift-rest/releases) ![Swift 3.0.x](https://img.shields.io/badge/Swift-3.0.x-orange.svg) ![platforms](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS-lightgrey.svg) [![Build Status](https://travis-ci.org/startupthekid/feathers-swift-rest.svg?branch=master)](https://travis-ci.org/startupthekid/feathers-swift-rest)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](#carthage) [![CocoaPods compatible](https://img.shields.io/cocoapods/v/FeathersSwiftRest.svg)](#cocoapods) [![GitHub release](https://img.shields.io/github/release/feathersjs/feathers-swift-rest.svg)](https://github.com/feathersjs/feathers-swift-rest/releases) ![Swift 3.0.x](https://img.shields.io/badge/Swift-3.0.x-orange.svg) ![platforms](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS-lightgrey.svg) [![Build Status](https://travis-ci.org/feathersjs/feathers-swift-rest.svg?branch=master)](https://travis-ci.org/feathersjs/feathers-swift-rest)
 
 ## What is FeathersSwiftRest?
 
-FeathersSwiftRest is a promise-based REST HTTP provider for [FeathersSwift](https://github.com/startupthekid/feathers-swift).
+FeathersSwiftRest is a promise-based REST HTTP provider for [FeathersSwift](https://github.com/feathersjs/feathers-swift).
 
 ## Installation
 
@@ -17,7 +17,7 @@ pod `FeathersSwiftRest`
 Add the following line to your Cartfile:
 
 ```
-github "startupthekid/feathers-swift-rest"
+github "feathersjs/feathers-swift-rest"
 ```
 
 ## Usage
