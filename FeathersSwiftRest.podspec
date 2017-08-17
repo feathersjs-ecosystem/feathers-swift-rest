@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "FeathersSwiftRest"
   # Version goes here and will be used to access the git tag later on, once we have a first release.
-  s.version      = "3.1.0"
+  s.version      = "3.1.1"
   s.summary      = "REST transport provider for FeathersSwift"
   s.description  = <<-DESC
                    REST provider for FeathersSwift for making HTTP connections to a
