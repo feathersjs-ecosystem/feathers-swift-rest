@@ -4,7 +4,7 @@
 
 ## What is FeathersSwiftRest?
 
-FeathersSwiftRest is a promise-based REST HTTP provider for [FeathersSwift](https://github.com/feathersjs/feathers-swift).
+FeathersSwiftRest is a ReactiveSwift REST HTTP provider for [FeathersSwift](https://github.com/feathersjs/feathers-swift).
 
 ## Installation
 
