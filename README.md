@@ -25,7 +25,7 @@ github "feathersjs/feathers-swift-rest"
 To use FeathersSwiftRest, create an instance of `RestProvider` and initialize your FeathersSwift application:
 
 ```swift
-let feathersRestApp = Feathers(provider: RestProvider(baseURL: URL(string: "https://myawesomefeathersapi.com")!)
+let feathersRestApp = Feathers(provider: RestProvider(baseURL: URL(string: "https://myawesomefeathersapi.com")!))
 ```
 
 That's it! Your feathers application will now support a REST API.
