@@ -1,10 +1,5 @@
 language: objective-c
-osx_image: xcode8.3
-
-cache:
-  - cocoapods
-  - directories:
-    - Carthage
+osx_image: xcode9.2
 
 before_install: true
 install:
