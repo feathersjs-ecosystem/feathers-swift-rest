@@ -1,10 +1,5 @@
 language: objective-c
-osx_image: xcode8.3
-
-cache:
-  - cocoapods
-  - directories:
-    - Carthage
+osx_image: xcode9.2
 
 before_install: true
 install:
@@ -45,7 +40,7 @@ matrix:
       env:
         - XCODE_SDK=appletvsimulator
         - XCODE_ACTION=build
-        - XCODE_DESTINATION="platform=tvOS Simulator,name=Apple TV 1080p"
+        - XCODE_DESTINATION="platform=tvOS Simulator,name=Apple TV"
     - script:
       - carthage bootstrap --no-use-binaries --platform watchOS
       - script/build
