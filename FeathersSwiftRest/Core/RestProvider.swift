@@ -25,7 +25,9 @@ final public class RestProvider: Provider {
         self.baseURL = baseURL
     }
 
-    public final func setup(app: Feathers) {}
+    public final func setup(app: Feathers) {
+        //no-op
+    }
 
     public func request(endpoint: Endpoint) -> SignalProducer<Response, AnyFeathersError> {
         return SignalProducer { [weak self] observer, disposable in
