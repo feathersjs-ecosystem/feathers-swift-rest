@@ -146,6 +146,7 @@ final public class RestProvider: Provider {
         if let accessToken = endpoint.accessToken {
             urlRequest.allHTTPHeaderFields = [endpoint.authenticationConfiguration.header: accessToken]
         }
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpBody = endpoint.method.data != nil ? try? JSONSerialization.data(withJSONObject: endpoint.method.data!, options: []) : nil
         return urlRequest
     }
