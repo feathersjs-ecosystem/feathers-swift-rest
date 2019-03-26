@@ -8,17 +8,17 @@
 
 import Foundation
 
-class PropertySubquerySet: Set<String> {
+class PropertySubquerySet {
     
-    class var pagination: PropertySubquerySet {
+    class var pagination: Set<String> {
         return Set<String>(["$skip", "$limit"])
     }
     
-    class var array: PropertySubquerySet {
+    class var array: Set<String> {
         return Set<String>(["$in", "$nin"])
     }
     
-    class var singleValueProperty: PropertySubquerySet {
+    class var singleValueProperty: Set<String> {
         return Set<String>(["$gt", "$gte", "$lt", "$lte", "$ne"])
     }
 }
