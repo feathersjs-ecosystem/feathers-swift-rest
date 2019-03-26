@@ -8,17 +8,30 @@
 
 import Foundation
 
+enum PropertySubqueryType {
+    case array
+    case singleValue
+    case sort
+}
+
 class PropertySubquerySet {
     
-    class var pagination: Set<String> {
-        return Set<String>(["$skip", "$limit"])
-    }
-    
-    class var array: Set<String> {
+    private class var array: Set<String> {
         return Set<String>(["$in", "$nin"])
     }
     
-    class var singleValueProperty: Set<String> {
+    private class var singleValueProperty: Set<String> {
         return Set<String>(["$gt", "$gte", "$lt", "$lte", "$ne"])
+    }
+    
+    class func type(for subqueryName: String) -> PropertySubqueryType {
+        
+        if array.contains(subqueryName) {
+            return .array
+        } else if singleValueProperty.contains(subqueryName) {
+            return .singleValue
+        }
+        
+        return .sort
     }
 }
