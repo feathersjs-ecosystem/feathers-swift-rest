@@ -190,12 +190,11 @@ fileprivate extension URL {
                 for nestedKey in valueDictKeys {
                     let type = PropertySubquerySet.type(for: nestedKey)
                     switch type {
-                    case .pagination:
-                        print("pagination \(key)")
                     case .array:
                         print("array \(key)")
                     case .singleValue:
-                        print("single value \(key)")
+                        items.append(URLQueryItem(name: "\(key)[\(nestedKey)]", value: "\(valueDict[nestedKey]!)"))
+                        print("single value \(key)[\(nestedKey)] = \(valueDict[nestedKey]!)")
                     case .sort:
                         print("sort \(key)")
                     }
@@ -203,6 +202,7 @@ fileprivate extension URL {
                 
             } else {
                 //pagination or eq
+                print("pagination or eq value \(key) = \(value)")
                 items.append(URLQueryItem(name: key, value: "\(value)"))
             }
         }
