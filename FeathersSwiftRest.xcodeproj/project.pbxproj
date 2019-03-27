@@ -33,6 +33,9 @@
 		EA9DB8891ECC15E4007A1668 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DB8401ECC072D007A1668 /* RestProvider.swift */; };
 		EAC0E8B11ECC04E700B0AE86 /* FeathersSwiftRest.h in Headers */ = {isa = PBXBuildFile; fileRef = EAC0E8AF1ECC04E700B0AE86 /* FeathersSwiftRest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F25638BF224A455A00A190FD /* PropertySubquerySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25638BE224A455A00A190FD /* PropertySubquerySet.swift */; };
+		F25638C0224B972C00A190FD /* PropertySubquerySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25638BE224A455A00A190FD /* PropertySubquerySet.swift */; };
+		F25638C1224B972D00A190FD /* PropertySubquerySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25638BE224A455A00A190FD /* PropertySubquerySet.swift */; };
+		F25638C2224B972E00A190FD /* PropertySubquerySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25638BE224A455A00A190FD /* PropertySubquerySet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -490,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9DB8661ECC11C6007A1668 /* RestProvider.swift in Sources */,
+				F25638C0224B972C00A190FD /* PropertySubquerySet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9DB8741ECC14C3007A1668 /* RestProvider.swift in Sources */,
+				F25638C1224B972D00A190FD /* PropertySubquerySet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9DB8891ECC15E4007A1668 /* RestProvider.swift in Sources */,
+				F25638C2224B972E00A190FD /* PropertySubquerySet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
