@@ -155,6 +155,7 @@ final public class RestProvider: Provider {
 
 fileprivate extension Service.Method {
 
+    /// Mapping of feathers method to http method
     fileprivate var httpMethod: HTTPMethod {
         switch self {
         case .find: return .get
@@ -211,6 +212,7 @@ fileprivate extension URL {
 
 fileprivate extension Endpoint {
 
+    /// Builds url according to endpoints' method
     fileprivate var url: URL {
         var url = baseURL.appendingPathComponent(path)
         switch method {
