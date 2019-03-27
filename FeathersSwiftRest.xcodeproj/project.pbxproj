@@ -143,7 +143,7 @@
 		EA9DB8421ECC0737007A1668 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				F25638BD224A452B00A190FD /* Auxiliary */,
+				F25638BE224A455A00A190FD /* PropertySubquerySet.swift */,
 				EA9DB8401ECC072D007A1668 /* RestProvider.swift */,
 			);
 			name = Core;
@@ -211,14 +211,6 @@
 				EAC0E8B01ECC04E700B0AE86 /* Info.plist */,
 			);
 			path = FeathersSwiftRest;
-			sourceTree = "<group>";
-		};
-		F25638BD224A452B00A190FD /* Auxiliary */ = {
-			isa = PBXGroup;
-			children = (
-				F25638BE224A455A00A190FD /* PropertySubquerySet.swift */,
-			);
-			name = Auxiliary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
