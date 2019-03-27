@@ -31,21 +31,24 @@ final public class RestProvider: Provider {
 
     public func request(endpoint: Endpoint) -> SignalProducer<Response, AnyFeathersError> {
         return SignalProducer { [weak self] observer, disposable in
-
-            //params + header
-            Alamofire.request(endpoint.url, method: endpoint.method.httpMethod, parameters: [:], encoding: endpoint.encoding, headers: [:])
+            guard let vSelf = self else {
+                observer.sendInterrupted()
+                return
+            }
+            let request = vSelf.buildRequest(from: endpoint)
+            Alamofire.request(request)
                 .validate()
-                .response(responseSerializer: DataRequest.jsonResponseSerializer(), completionHandler: { [weak self] response in
-                guard let vSelf = self else { return }
-                let result = vSelf.handleResponse(response)
-                if let error = result.error {
-                    observer.send(error: error)
-                } else if let response = result.value {
-                    observer.send(value: response)
-                } else {
-                    observer.send(error: AnyFeathersError(FeathersNetworkError.unknown))
-                }
-            })
+                .response(responseSerializer: DataRequest.jsonResponseSerializer()) { [weak self] response in
+                    guard let vSelf = self else { return }
+                    let result = vSelf.handleResponse(response)
+                    if let error = result.error {
+                        observer.send(error: error)
+                    } else if let response = result.value {
+                        observer.send(value: response)
+                    } else {
+                        observer.send(error: AnyFeathersError(FeathersNetworkError.unknown))
+                    }
+            }
         }
     }
 
