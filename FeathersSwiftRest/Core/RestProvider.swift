@@ -155,6 +155,7 @@ final public class RestProvider: Provider {
 
 fileprivate extension Service.Method {
 
+    /// Mapping of feathers method to http method
     fileprivate var httpMethod: HTTPMethod {
         switch self {
         case .find: return .get
@@ -178,7 +179,32 @@ fileprivate extension URL {
         guard var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true) else {
             return self
         }
-        urlComponents.queryItems = urlComponents.queryItems ?? [] + parameters.map { URLQueryItem(name: $0, value: "\($1)") }
+        var items: [URLQueryItem] = []
+        
+        for (key, value) in parameters {
+            if let valueDict = value as? [String: Any] {
+                let valueDictKeys = Array(valueDict.keys)
+                for nestedKey in valueDictKeys {
+                    let type = PropertySubquerySet.type(for: nestedKey)
+                    switch type {
+                    case .array:
+                        guard let valuesArray = valueDict[nestedKey] as? [String] else {
+                            continue
+                        }
+                        for (index, object) in valuesArray.enumerated() {
+                            items.append(URLQueryItem(name: "\(key)[\(nestedKey)][\(index)]", value: "\(object)"))
+                        }
+                    case .singleValue:
+                        items.append(URLQueryItem(name: "\(key)[\(nestedKey)]", value: "\(valueDict[nestedKey]!)"))
+                    case .sort:
+                        items.append(URLQueryItem(name: "\(key)[\(nestedKey)]", value: "\(valueDict[nestedKey]!)"))
+                    }
+                }
+            } else {
+                items.append(URLQueryItem(name: key, value: "\(value)"))
+            }
+        }
+        urlComponents.queryItems = items
         return urlComponents.url
     }
     
@@ -186,6 +212,7 @@ fileprivate extension URL {
 
 fileprivate extension Endpoint {
 
+    /// Builds url according to endpoints' method
     fileprivate var url: URL {
         var url = baseURL.appendingPathComponent(path)
         switch method {
@@ -200,7 +227,6 @@ fileprivate extension Endpoint {
         url = method.parameters != nil ? (url.URLByAppendingQueryParameters(parameters: method.parameters!) ?? url) : url
         return url
     }
-    
 }
 
 public extension Service.Method {
