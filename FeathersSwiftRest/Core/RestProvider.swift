@@ -225,6 +225,14 @@ fileprivate extension Endpoint {
         return url
     }
     
+    fileprivate var encoding: ParameterEncoding {
+        switch method {
+        case .get(_, _), .find(_):
+            return URLEncoding.default
+        case .update(_,_,_), .patch(_,_,_), .remove(_,_), .create(_,_):
+            return JSONEncoding.default
+        }
+    }
 }
 
 public extension Service.Method {
