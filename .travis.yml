@@ -12,11 +12,11 @@ before_script:
 xcode_project: FeathersSwiftRest.xcodeproj
 matrix:
   include:
-    - script:
-      - pod repo update
-      - travis_wait 30 pod lib lint FeathersSwiftRest.podspec
-      env:
-        - JOB=PODSPEC
+#     - script:
+#       - pod repo update
+#       - travis_wait 30 pod lib lint FeathersSwiftRest.podspec
+#       env:
+#         - JOB=PODSPEC
     - script:
       - carthage bootstrap --no-use-binaries --platform mac
       - script/build
