@@ -1,5 +1,5 @@
-github "Alamofire/Alamofire" "4.8.1"
+github "Alamofire/Alamofire" "4.8.2"
 github "ReactiveCocoa/ReactiveSwift" "5.0.0"
 github "antitypical/Result" "4.1.0"
-github "lucyio/feathers-swift" "e1c9311c6a7449d28c1846b352136a79a47ec370"
+github "lucyio/feathers-swift" "9128b4270db6d490b08cc6e9b4711ab8784d6e42"
 github "marketplacer/keychain-swift" "13.0.0"
