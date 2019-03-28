@@ -319,7 +319,6 @@
 				EAC0E8A81ECC04E700B0AE86 /* Frameworks */,
 				EAC0E8A91ECC04E700B0AE86 /* Headers */,
 				EAC0E8AA1ECC04E700B0AE86 /* Resources */,
-				EA376A551ED4864C001DEC50 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -414,24 +413,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		EA376A551ED4864C001DEC50 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Feathers.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		EA376A571ED486FA001DEC50 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
