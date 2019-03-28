@@ -363,11 +363,11 @@
 			};
 			buildConfigurationList = EAC0E8A61ECC04E700B0AE86 /* Build configuration list for PBXProject "FeathersSwiftRest" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = EAC0E8A21ECC04E700B0AE86;
 			productRefGroup = EAC0E8AD1ECC04E700B0AE86 /* Products */;
