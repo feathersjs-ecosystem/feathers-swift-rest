@@ -88,7 +88,9 @@ final public class RestProvider: Provider {
                 observer.sendInterrupted()
                 return
             }
-            Alamofire.request(vSelf.baseURL.appendingPathComponent(path), method: method, parameters: parameters, encoding: encoding)
+            
+            let pathString = vSelf.baseURL.absoluteString.last == "/" ? String(path.dropFirst()) : path
+            Alamofire.request(vSelf.baseURL.appendingPathComponent(pathString), method: method, parameters: parameters, encoding: encoding)
                 .validate()
                 .response(responseSerializer: DataRequest.jsonResponseSerializer()) { response in
                     let result = vSelf.handleResponse(response)
