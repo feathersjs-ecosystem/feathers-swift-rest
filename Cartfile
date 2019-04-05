@@ -1,3 +1,3 @@
-git "https://github.com/lucyio/feathers-swift.git" "swift5_support"
+github "feathersjs/feathers-swift"
 github "Alamofire/Alamofire"
 github "antitypical/Result"
