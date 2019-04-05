@@ -158,6 +158,7 @@ final public class RestProvider: Provider {
 fileprivate extension Service.Method {
 
     var httpMethod: HTTPMethod {
+    /// Mapping of feathers method to http method
         switch self {
         case .find: return .get
         case .get: return .get
@@ -214,6 +215,7 @@ fileprivate extension URL {
 fileprivate extension Endpoint {
 
     var url: URL {
+    /// Builds url according to endpoints' method
         var url = baseURL.appendingPathComponent(path)
         switch method {
         case .get(let id, _):
@@ -226,15 +228,6 @@ fileprivate extension Endpoint {
         }
         url = method.parameters != nil ? (url.URLByAppendingQueryParameters(parameters: method.parameters!) ?? url) : url
         return url
-    }
-    
-    var encoding: ParameterEncoding {
-        switch method {
-        case .get(_, _), .find(_):
-            return URLEncoding.default
-        case .update(_,_,_), .patch(_,_,_), .remove(_,_), .create(_,_):
-            return JSONEncoding.default
-        }
     }
 }
 

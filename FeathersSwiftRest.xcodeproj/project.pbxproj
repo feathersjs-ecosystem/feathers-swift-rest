@@ -32,7 +32,10 @@
 		EA9DB8741ECC14C3007A1668 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DB8401ECC072D007A1668 /* RestProvider.swift */; };
 		EA9DB8891ECC15E4007A1668 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9DB8401ECC072D007A1668 /* RestProvider.swift */; };
 		EAC0E8B11ECC04E700B0AE86 /* FeathersSwiftRest.h in Headers */ = {isa = PBXBuildFile; fileRef = EAC0E8AF1ECC04E700B0AE86 /* FeathersSwiftRest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F25638BF224A455A00A190FD /* PropertySubquerySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25638BE224A455A00A190FD /* PropertySubquerySet.swift */; };
+		F25638C4224BA3CE00A190FD /* PropertySubquerySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25638C3224BA3CE00A190FD /* PropertySubquerySet.swift */; };
+		F25638C5224BA3CE00A190FD /* PropertySubquerySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25638C3224BA3CE00A190FD /* PropertySubquerySet.swift */; };
+		F25638C6224BA3CE00A190FD /* PropertySubquerySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25638C3224BA3CE00A190FD /* PropertySubquerySet.swift */; };
+		F25638C7224BA3CE00A190FD /* PropertySubquerySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25638C3224BA3CE00A190FD /* PropertySubquerySet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -86,7 +89,7 @@
 		EAC0E8AC1ECC04E700B0AE86 /* FeathersSwiftRest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeathersSwiftRest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC0E8AF1ECC04E700B0AE86 /* FeathersSwiftRest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeathersSwiftRest.h; sourceTree = "<group>"; };
 		EAC0E8B01ECC04E700B0AE86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F25638BE224A455A00A190FD /* PropertySubquerySet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertySubquerySet.swift; sourceTree = "<group>"; };
+		F25638C3224BA3CE00A190FD /* PropertySubquerySet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PropertySubquerySet.swift; path = Core/PropertySubquerySet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +143,7 @@
 		EA9DB8421ECC0737007A1668 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				F25638BD224A452B00A190FD /* Auxiliary */,
+				F25638C3224BA3CE00A190FD /* PropertySubquerySet.swift */,
 				EA9DB8401ECC072D007A1668 /* RestProvider.swift */,
 			);
 			name = Core;
@@ -208,14 +211,6 @@
 				EAC0E8B01ECC04E700B0AE86 /* Info.plist */,
 			);
 			path = FeathersSwiftRest;
-			sourceTree = "<group>";
-		};
-		F25638BD224A452B00A190FD /* Auxiliary */ = {
-			isa = PBXGroup;
-			children = (
-				F25638BE224A455A00A190FD /* PropertySubquerySet.swift */,
-			);
-			name = Auxiliary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9DB8661ECC11C6007A1668 /* RestProvider.swift in Sources */,
+				F25638C5224BA3CE00A190FD /* PropertySubquerySet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9DB8741ECC14C3007A1668 /* RestProvider.swift in Sources */,
+				F25638C6224BA3CE00A190FD /* PropertySubquerySet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9DB8891ECC15E4007A1668 /* RestProvider.swift in Sources */,
+				F25638C7224BA3CE00A190FD /* PropertySubquerySet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9DB8411ECC072D007A1668 /* RestProvider.swift in Sources */,
-				F25638BF224A455A00A190FD /* PropertySubquerySet.swift in Sources */,
+				F25638C4224BA3CE00A190FD /* PropertySubquerySet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
