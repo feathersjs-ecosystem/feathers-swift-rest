@@ -88,7 +88,9 @@ final public class RestProvider: Provider {
                 observer.sendInterrupted()
                 return
             }
-            Alamofire.request(vSelf.baseURL.appendingPathComponent(path), method: method, parameters: parameters, encoding: encoding)
+            
+            let pathString = vSelf.baseURL.absoluteString.last == "/" ? String(path.dropFirst()) : path
+            Alamofire.request(vSelf.baseURL.appendingPathComponent(pathString), method: method, parameters: parameters, encoding: encoding)
                 .validate()
                 .response(responseSerializer: DataRequest.jsonResponseSerializer()) { response in
                     let result = vSelf.handleResponse(response)
@@ -155,8 +157,8 @@ final public class RestProvider: Provider {
 
 fileprivate extension Service.Method {
 
+    var httpMethod: HTTPMethod {
     /// Mapping of feathers method to http method
-    fileprivate var httpMethod: HTTPMethod {
         switch self {
         case .find: return .get
         case .get: return .get
@@ -175,7 +177,7 @@ fileprivate extension URL {
     ///
     /// - Parameter parameters: Query parameters.
     /// - Returns: New url with query parameters appended to the end.
-    fileprivate func URLByAppendingQueryParameters(parameters: [String: Any]) -> URL? {
+    func URLByAppendingQueryParameters(parameters: [String: Any]) -> URL? {
         guard var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true) else {
             return self
         }
@@ -212,8 +214,8 @@ fileprivate extension URL {
 
 fileprivate extension Endpoint {
 
+    var url: URL {
     /// Builds url according to endpoints' method
-    fileprivate var url: URL {
         var url = baseURL.appendingPathComponent(path)
         switch method {
         case .get(let id, _):
@@ -231,7 +233,7 @@ fileprivate extension Endpoint {
 
 public extension Service.Method {
 
-    public var id: String? {
+    var id: String? {
         switch self {
         case .get(let id, _): return id
         case .update(let id, _, _),
@@ -241,7 +243,7 @@ public extension Service.Method {
         }
     }
 
-    public var parameters: [String: Any]? {
+    var parameters: [String: Any]? {
         switch self {
         case .find(let query): return query?.serialize()
         case .get(_, let query): return query?.serialize()
@@ -252,7 +254,7 @@ public extension Service.Method {
         }
     }
 
-    public var data: [String: Any]? {
+    var data: [String: Any]? {
         switch self {
         case .create(let data, _): return data
         case .update(_, let data, _): return data
