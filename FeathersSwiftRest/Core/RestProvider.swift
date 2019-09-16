@@ -8,8 +8,7 @@
 
 import Foundation
 import Alamofire
-import enum Result.Result
-import enum Result.NoError
+import Result
 import Feathers
 import ReactiveSwift
 
@@ -29,7 +28,7 @@ final public class RestProvider: Provider {
         //no-op
     }
 
-    public func request(endpoint: Endpoint) -> SignalProducer<Response, AnyFeathersError> {
+    public func request(endpoint: Endpoint) -> SignalProducer<Response, FeathersError> {
         return SignalProducer { [weak self] observer, disposable in
             guard let vSelf = self else {
                 observer.sendInterrupted()
@@ -42,21 +41,22 @@ final public class RestProvider: Provider {
                     guard let vSelf = self else { return }
                     let result = vSelf.handleResponse(response)
                     if let error = result.error {
+                        //send correct error here
                         observer.send(error: error)
                     } else if let response = result.value {
                         observer.send(value: response)
                     } else {
-                        observer.send(error: AnyFeathersError(FeathersNetworkError.unknown))
+                        observer.send(error: FeathersError(reason: "No value in response"))
                     }
             }
         }
     }
 
-    public final func authenticate(_ path: String, credentials: [String: Any]) -> SignalProducer<Response, AnyFeathersError> {
+    public final func authenticate(_ path: String, credentials: [String: Any]) -> SignalProducer<Response, FeathersError> {
         return authenticationRequest(path: path, method: .post, parameters: credentials, encoding: URLEncoding.httpBody)
     }
 
-    public func logout(path: String) -> SignalProducer<Response, AnyFeathersError> {
+    public func logout(path: String) -> SignalProducer<Response, FeathersError> {
         return authenticationRequest(path: path, method: .delete, parameters: nil, encoding: URLEncoding.default)
     }
 
@@ -82,7 +82,7 @@ final public class RestProvider: Provider {
     ///   - parameters: Parameters.
     ///   - encoding: Parameter encoding.
     ///   - completion: Completion block.
-    private func authenticationRequest(path: String, method: HTTPMethod, parameters: [String: Any]?, encoding: ParameterEncoding) -> SignalProducer<Response, AnyFeathersError>{
+    private func authenticationRequest(path: String, method: HTTPMethod, parameters: [String: Any]?, encoding: ParameterEncoding) -> SignalProducer<Response, FeathersError>{
         return SignalProducer { [weak self] observer, disposable in
             guard let vSelf = self else {
                 observer.sendInterrupted()
@@ -99,7 +99,7 @@ final public class RestProvider: Provider {
                     } else if let response = result.value {
                         observer.send(value: response)
                     } else {
-                        observer.send(error: AnyFeathersError(FeathersNetworkError.unknown))
+                        observer.send(error: FeathersError(reason: "No value in response"))
                     }
             }
         }
@@ -109,14 +109,14 @@ final public class RestProvider: Provider {
     ///
     /// - Parameter dataResponse: Alamofire data response.
     /// - Returns: Result with an error or a successful response.
-    private func handleResponse(_ dataResponse: DataResponse<Any>) -> Result<Response, AnyFeathersError> {
+    private func handleResponse(_ dataResponse: DataResponse<Any>) -> Swift.Result<Response, FeathersError> {
         // If the status code maps to a feathers error code, return that error.
-        if let statusCode = dataResponse.response?.statusCode,
-            let feathersError = FeathersNetworkError(statusCode: statusCode) {
-            return .failure(AnyFeathersError(feathersError))
+        if let statusCode = dataResponse.response?.statusCode {
+            let feathersError = FeathersError(payload: [:], statusCode: statusCode)
+            return .failure(feathersError)
         } else if let error = dataResponse.error {
             // If the data response has an error, wrap it and return it.
-            return .failure(AnyFeathersError(FeathersNetworkError(error: error)))
+            return .failure(FeathersError(error: error))
         } else if let value = dataResponse.value {
             // If the response value is an array, there is no pagination.
             if let jsonArray = value as? [Any] {
@@ -135,7 +135,7 @@ final public class RestProvider: Provider {
                 }
             }
         }
-        return .failure(AnyFeathersError(FeathersNetworkError.unknown))
+        return .failure(FeathersError(reason: "No value in response"))
     }
 
     /// Build a request from the given endpiont.

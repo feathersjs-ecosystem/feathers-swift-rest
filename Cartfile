@@ -1,3 +1,3 @@
-github "feathersjs/feathers-swift"
+github "feathersjs/feathers-swift" "feature/informative_errors"
 github "Alamofire/Alamofire"
 github "antitypical/Result"
